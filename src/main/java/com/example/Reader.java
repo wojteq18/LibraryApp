@@ -52,4 +52,10 @@ public class Reader
             System.out.println("This book is not borrowed by " + reader_name);
         }    
     }
+
+    @Override
+    public String toString()
+    {
+        return "Reader: " + reader_name;
+    }
 }
