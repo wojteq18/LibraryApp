@@ -7,8 +7,8 @@ public class Book
     private String title;
     private String author;
     private List<Copy> copies;
+    private Library library;
 
-    
     public Book(String title, String author)
     {
         this.title = title;
@@ -75,5 +75,4 @@ public class Book
     {
         return "Book: " + title + " by " + author;
     }
-
 }

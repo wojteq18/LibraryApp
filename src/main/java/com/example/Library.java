@@ -40,4 +40,15 @@ public class Library
     {
         users.add(reader);
     }
+
+    private void remove_user(Reader reader)
+    {
+        users.remove(reader);
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Library: " + books + " " + users;
+    }
 }
