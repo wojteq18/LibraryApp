@@ -17,8 +17,6 @@ class LibraryTest
         book = new Book("Wiedzmin", "Andrzej Sapkowski");
         reader = new Reader("Jan Kowalski");
         book.add_copy(1);
-        //library.add_book(book, 1);
-        //library.add_user(reader);
     }
 
     @Test
@@ -26,7 +24,7 @@ class LibraryTest
     {
         library.add_book(book, 3);
         assertEquals(1, library.get_books().size());
-        assertEquals(3, book.get_number_of_copies());
+        assertEquals(4, book.get_number_of_copies()); //4, bo dodalismy 1 egzemplarz w setUp() i 3 w add_book()
     }
 
     @Test
