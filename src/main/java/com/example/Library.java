@@ -23,27 +23,32 @@ public class Library
         return users;
     }
 
-    public void add_book(Book book, int ilosc)
+    public void add_book(Book book, int ilosc) 
     {
-        if(books.contains(book))
-        {
-            book.add_copy(ilosc);
-        }
-        else
-        {
-            books.add(book);
-            book.add_copy(ilosc);
-        }
+    int index = books.indexOf(book);
+    if (index != -1) { // Sprawdza, czy książka już istnieje w kolekcji
+        books.get(index).add_copy(ilosc); // Dodaje kopie do istniejącej książki
+    } else {
+        book.add_copy(ilosc); // Dodaje kopie do nowego obiektu
+        books.add(book); // Dodaje nową książkę do listy
     }
+}
 
     public void add_user(Reader reader)
     {
         users.add(reader);
     }
 
-    private void remove_user(Reader reader)
+    public void remove_user(Reader reader)
     {
-        users.remove(reader);
+        if(users.contains(reader))
+        {
+            users.remove(reader);
+        }
+        else
+        {
+            System.out.println("This user is not in the library");
+        }    
     }
 
     @Override
