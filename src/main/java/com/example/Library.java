@@ -51,6 +51,36 @@ public class Library
         }    
     }
 
+    public Book find_book_by_author_and_title(String author, String title)
+    {
+        for (Book book : books)
+        {
+            if (book.get_author().equals(author) && book.get_title().equals(title)) //equlas porównuje wartości 
+            {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    public Reader find_user_by_name(String name)
+    {
+        for (Reader user : users)
+        {
+            if (user.get_reader_name().equals(name))
+            {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    /*@Override
+    public int hashCode()
+    {
+        return books.hashCode() + users.hashCode();
+    }*/
+
     @Override
     public String toString()
     {
