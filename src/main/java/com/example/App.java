@@ -2,10 +2,9 @@ package com.example;
 
 import java.util.Scanner;
 
-
 public class App 
 {
-    public static void main( String[] args )
+    public static void main(String[] args)
     {
         Library library = new Library();
         Scanner scanner = new Scanner(System.in);
@@ -20,8 +19,8 @@ public class App
             System.out.println("6. Books in library");
             System.out.println("7. Users in library");
             System.out.println("8. Users books");
-            System.out.println("9. number of books");
-            System.out.println("10. exit");
+            System.out.println("9. Number of books");
+            System.out.println("10. Exit");
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Wyczyść bufor po nextInt(), aby uniknąć problemów przy następnym nextLine()
@@ -29,12 +28,12 @@ public class App
             {
                 case 1: 
                     System.out.println("Enter book title: ");
-                    String title = scanner.nextLine(); // Wczytuje pełen wiersz tytułu
+                    String title = scanner.nextLine();
                     System.out.println("Enter book author: ");
-                    String author = scanner.nextLine(); // Wczytuje pełen wiersz autora
+                    String author = scanner.nextLine();
                     System.out.println("Enter book copies: ");
-                    int copies = scanner.nextInt(); // Wczytuje liczbę kopii
-                    scanner.nextLine(); // Wyczyść bufor po nextInt(), aby uniknąć problemów przy następnym nextLine()
+                    int copies = scanner.nextInt();
+                    scanner.nextLine();
                     Book book = new Book(title, author);
                     library.add_book(book, copies);
                     break;
@@ -122,12 +121,11 @@ public class App
                         System.out.println("User not found in the library");
                         break;
                     }
-
                     else
                     {
                         System.out.println("Books borrowed by " + user3.get_reader_name() + ": " + user3.get_borrowed_books());
                         break;
-                    }            
+                    }
 
                 case 9:
                     System.out.println("Enter book title: ");
@@ -135,7 +133,6 @@ public class App
                     System.out.println("Enter book author: ");
                     String author3 = scanner.nextLine();
                     Book found_book = library.find_book_by_author_and_title(author3, title3);
-
                     if (found_book == null)
                     {
                         System.out.println("Book not found in the library");
@@ -149,12 +146,12 @@ public class App
 
                 case 10:
                     running = false;
-                    break;       
+                    break;
 
                 default:
                     System.out.println("Invalid choice");
-                    break;         
-            }   
+                    break;
+            }
         }
         scanner.close();
     }

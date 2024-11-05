@@ -1,4 +1,5 @@
 package com.example;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,13 +27,13 @@ public class Library
     public void add_book(Book book, int ilosc) 
     {
         int index = books.indexOf(book);
-        if (index != -1) { // Sprawdza, czy książka już istnieje w kolekcji
-            books.get(index).add_copy(ilosc); // Dodaje kopie do istniejącej książki
+        if (index != -1) {
+            books.get(index).add_copy(ilosc);
         }
         else 
         {
-            book.add_copy(ilosc); // Dodaje kopie do nowego obiektu
-            books.add(book); // Dodaje nową książkę do listy
+            book.add_copy(ilosc);
+            books.add(book);
         }
     }
 
@@ -57,7 +58,7 @@ public class Library
     {
         for (Book book : books)
         {
-            if (book.get_author().equals(author) && book.get_title().equals(title)) //equlas porównuje wartości 
+            if (book.get_author().equals(author) && book.get_title().equals(title))
             {
                 return book;
             }
