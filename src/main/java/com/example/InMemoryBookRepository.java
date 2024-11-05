@@ -13,7 +13,7 @@ public class InMemoryBookRepository implements BookRepository
         int index = books.indexOf(book);
         if (index != - 1)
         {
-            books.get(index).add_copy(copies);
+            books.get(index).add_copy(copies); //index dziala na liscie books, jesli znajdzie jego pozycje, zwroci jego pozycje na liscie, jesli nie, zwroci -1
         }
         else
         {

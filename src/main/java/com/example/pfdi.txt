@@ -1,0 +1,17 @@
+Pure Fabrication i Dependency Inversion:
+
+Pure fabrication to wzorzec, który mówi, że warto tworzyć „sztuczne” klasy, które pomagają spełniać odpowiedzialności aplikacji, 
+nawet jeśli nie odpowiadają rzeczywistym bytom w świecie rzeczywistym.
+
+Dependency Inversion to zasada, która mówi, że:
+
+a Wysokopoziomowe moduły (te, które zawierają główną logikę biznesową) nie powinny zależeć od niskopoziomowych modułów (np. implementacji przechowywania danych).
+b Zarówno wysokopoziomowe, jak i niskopoziomowe moduły powinny zależeć od abstrakcji (interfejsów).
+
+Przykład Dependency Inversion w naszym przypadku
+
+Wysokopoziomowa klasa Library nie powinna zależeć od konkretnej implementacji repozytorium (np. InMemoryBookRepository). 
+Zamiast tego powinna zależeć od abstrakcji – czyli interfejsu BookRepository.
+
+Dzięki temu Library może korzystać z dowolnej implementacji BookRepository, np. InMemoryBookRepository lub DatabaseBookRepository. 
+Takie rozwiązanie daje dużą elastyczność, ponieważ możemy zmieniać implementację repozytorium bez potrzeby zmiany kodu w klasie Library.
