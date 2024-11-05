@@ -1,7 +1,6 @@
 package com.example;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 public class Book
@@ -73,30 +72,8 @@ public class Book
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if(obj == null || getClass() != obj.getClass())
-        {
-            return false;
-        }
-        Book book = (Book) obj;
-
-        return Objects.equals(title, book.title) && Objects.equals(author, book.author);
-    }
-
-    @Override 
-    public int hashCode()
-    {
-        return Objects.hash(title, author);
-    }
-
-    @Override
     public String toString()
     {
-        return "Book: " + title + " by " + author + " | Copies: " + get_number_of_copies();
+        return "Book: " + title + " by " + author;
     }
 }
