@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.List;
+
 public class Library
 {
     private final BookRepository book_repository;
@@ -51,5 +53,15 @@ public class Library
     public void display_users()
     {
         System.out.println(reader_repository.find_all_readers());
+    }
+
+    public List<Book> get_books()
+    {
+        return book_repository.find_all_books();
+    }
+
+    public List<Reader> get_users()
+    {
+        return reader_repository.find_all_readers();
     }
 }
