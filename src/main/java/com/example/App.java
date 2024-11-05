@@ -2,12 +2,11 @@ package com.example;
 
 import java.util.Scanner;
 
-
 public class App 
 {
-    public static void main( String[] args )
+    public static void main(String[] args)
     {
-        Library library = new Library(null, null);
+        Library library = new Library();
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
         while (running)
@@ -20,8 +19,8 @@ public class App
             System.out.println("6. Books in library");
             System.out.println("7. Users in library");
             System.out.println("8. Users books");
-            System.out.println("9. number of books");
-            System.out.println("10. exit");
+            System.out.println("9. Number of books");
+            System.out.println("10. Exit");
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Wyczyść bufor po nextInt(), aby uniknąć problemów przy następnym nextLine()
@@ -29,12 +28,12 @@ public class App
             {
                 case 1: 
                     System.out.println("Enter book title: ");
-                    String title = scanner.nextLine(); // Wczytuje pełen wiersz tytułu
+                    String title = scanner.nextLine();
                     System.out.println("Enter book author: ");
-                    String author = scanner.nextLine(); // Wczytuje pełen wiersz autora
+                    String author = scanner.nextLine();
                     System.out.println("Enter book copies: ");
-                    int copies = scanner.nextInt(); // Wczytuje liczbę kopii
-                    scanner.nextLine(); // Wyczyść bufor po nextInt(), aby uniknąć problemów przy następnym nextLine()
+                    int copies = scanner.nextInt();
+                    scanner.nextLine();
                     Book book = new Book(title, author);
                     library.add_book(book, copies);
                     break;
@@ -49,31 +48,59 @@ public class App
                 case 3:
                     System.out.println("Enter user name: ");
                     String user_name = scanner.nextLine();
-                    Reader user = new Reader(user_name);
-                    library.remove_user(user);
-                    break;
+                    Reader user = library.find_user_by_name(user_name);
+                    if (user == null)
+                    {
+                        System.out.println("User not found in the library");
+                        break;
+                    }
+                    else
+                    {
+                        library.remove_user(user);
+                        break;
+                    }
 
                 case 4:
                     System.out.println("Enter user name: ");
                     String user_name1 = scanner.nextLine();
-                    Reader user1 = new Reader(user_name1);
+                    Reader user1 = library.find_user_by_name(user_name1);
+                    if (user1 == null)
+                    {
+                        System.out.println("User not found in the library");
+                        break;
+                    }
                     System.out.println("Enter book title: ");
                     String title1 = scanner.nextLine();
                     System.out.println("Enter book author: ");
                     String author1 = scanner.nextLine();
-                    Book book1 = new Book(title1, author1);
+                    Book book1 = library.find_book_by_author_and_title(author1, title1);
+                    if (book1 == null)
+                    {
+                        System.out.println("Book not found in the library");
+                        break;
+                    }
                     user1.reader_borrow_book(book1);
                     break;
 
                 case 5:
                     System.out.println("Enter user name: ");
                     String user_name2 = scanner.nextLine();
-                    Reader user2 = new Reader(user_name2);
+                    Reader user2 = library.find_user_by_name(user_name2);
+                    if (user2 == null)
+                    {
+                        System.out.println("User not found in the library");
+                        break;
+                    }
                     System.out.println("Enter book title: ");
                     String title2 = scanner.nextLine();
                     System.out.println("Enter book author: ");
                     String author2 = scanner.nextLine();
-                    Book book2 = new Book(title2, author2);
+                    Book book2 = library.find_book_by_author_and_title(author2, title2);
+                    if (book2 == null)
+                    {
+                        System.out.println("Book not found in the library");
+                        break;
+                    }
                     user2.reader_return_book(book2);
                     break;
 
@@ -86,29 +113,45 @@ public class App
                     break;
 
                 case 8:
-                    //            
+                    System.out.println("Enter user name: ");
+                    String user_name3 = scanner.nextLine();
+                    Reader user3 = library.find_user_by_name(user_name3);
+                    if (user3 == null)
+                    {
+                        System.out.println("User not found in the library");
+                        break;
+                    }
+                    else
+                    {
+                        System.out.println("Books borrowed by " + user3.get_reader_name() + ": " + user3.get_borrowed_books());
+                        break;
+                    }
 
                 case 9:
                     System.out.println("Enter book title: ");
                     String title3 = scanner.nextLine();
                     System.out.println("Enter book author: ");
                     String author3 = scanner.nextLine();
-                    if(library.get_books().contains(new Book(title3, author3)))
+                    Book found_book = library.find_book_by_author_and_title(author3, title3);
+                    if (found_book == null)
                     {
-                        System.out.println("Number of copies: " + library.get_books().get(library.get_books().indexOf(new Book(title3, author3))).get_copies());
+                        System.out.println("Book not found in the library");
+                        break;
                     }
                     else
                     {
-                        System.out.println("This book is not in the library");
+                        System.out.println("Number of copies: " + found_book.get_number_of_copies());
+                        break;
                     }
+
                 case 10:
                     running = false;
-                    break;       
+                    break;
 
                 default:
                     System.out.println("Invalid choice");
-                    break;         
-            }   
+                    break;
+            }
         }
         scanner.close();
     }

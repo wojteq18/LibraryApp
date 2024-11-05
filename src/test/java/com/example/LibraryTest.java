@@ -13,7 +13,7 @@ class LibraryTest
     @BeforeEach
     void set_up()
     {
-        library = new Library(null, null);
+        library = new Library();
         book = new Book("Wiedzmin", "Andrzej Sapkowski");
         reader = new Reader("Jan Kowalski");
         book.add_copy(1);

@@ -1,4 +1,5 @@
 package com.example;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ public class Library
     private List<Book> books;
     private List<Reader> users;
 
-    public Library(List<Book> books, List<Reader> readers)
+    public Library()
     {
         this.books = new ArrayList<>();
         this.users = new ArrayList<>();
@@ -25,14 +26,16 @@ public class Library
 
     public void add_book(Book book, int ilosc) 
     {
-    int index = books.indexOf(book);
-    if (index != -1) { // Sprawdza, czy książka już istnieje w kolekcji
-        books.get(index).add_copy(ilosc); // Dodaje kopie do istniejącej książki
-    } else {
-        book.add_copy(ilosc); // Dodaje kopie do nowego obiektu
-        books.add(book); // Dodaje nową książkę do listy
+        int index = books.indexOf(book);
+        if (index != -1) {
+            books.get(index).add_copy(ilosc);
+        }
+        else 
+        {
+            book.add_copy(ilosc);
+            books.add(book);
+        }
     }
-}
 
     public void add_user(Reader reader)
     {
@@ -55,7 +58,7 @@ public class Library
     {
         for (Book book : books)
         {
-            if (book.get_author().equals(author) && book.get_title().equals(title)) //equlas porównuje wartości 
+            if (book.get_author().equals(author) && book.get_title().equals(title))
             {
                 return book;
             }
@@ -74,12 +77,6 @@ public class Library
         }
         return null;
     }
-
-    /*@Override
-    public int hashCode()
-    {
-        return books.hashCode() + users.hashCode();
-    }*/
 
     @Override
     public String toString()

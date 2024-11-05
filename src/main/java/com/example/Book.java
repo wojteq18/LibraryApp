@@ -1,21 +1,19 @@
 package com.example;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
 
 public class Book
 {
     private String title;
     private String author;
     private List<Copy> copies;
-    private Library library;
 
     public Book(String title, String author)
     {
         this.title = title;
         this.author = author;
-        this.copies = new ArrayList<>();    
+        this.copies = new ArrayList<>();
     }
 
     public String get_title()
@@ -42,15 +40,13 @@ public class Book
     {
         for (int i = 0; i < number_of_copies; i++)
         {
-            copies.add(new Copy(this)); //tworzy egzemplarz copy wewnatrz metody 
+            copies.add(new Copy(this));
         }
     }
 
     public boolean borrow_copy()
     {
-        Copy available_copy = copies.stream().filter(Copy::is_available).findFirst().orElse(null); //copies.stream() - tworzy strumien z listy copies, 
-        //filter(Copy::is_available) - filtruje strumien, zostawiajac tylko te egzemplarze, ktore sa dostepne, findFirst() - zwraca pierwszy element strumienia, ktory spelnia warunek, 
-        //orElse(null) - zwraca null, jesli nie znaleziono zadnego egzemplarza
+        Copy available_copy = copies.stream().filter(Copy::is_available).findFirst().orElse(null);
         if(available_copy != null)
         {
             available_copy.borrow_book();
@@ -61,7 +57,7 @@ public class Book
 
     public void return_copy()
     {
-        Copy borrow_from_copy = copies.stream().filter(Copy -> !Copy.is_available()).findFirst().orElse(null);
+        Copy borrow_from_copy = copies.stream().filter(copy -> !copy.is_available()).findFirst().orElse(null);
         if(borrow_from_copy != null)
         {
             borrow_from_copy.return_book();
@@ -73,30 +69,8 @@ public class Book
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if(obj == null || getClass() != obj.getClass())
-        {
-            return false;
-        }
-        Book book = (Book) obj;
-
-        return Objects.equals(title, book.title) && Objects.equals(author, book.author);
-    }
-
-    @Override 
-    public int hashCode()
-    {
-        return Objects.hash(title, author);
-    }
-
-    @Override
     public String toString()
     {
-        return "Book: " + title + " by " + author + " | Copies: " + get_number_of_copies();
+        return "Book: " + title + " by " + author;
     }
 }
