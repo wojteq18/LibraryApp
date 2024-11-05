@@ -1,5 +1,9 @@
 /home/vostok/codes/LibraryApp/src/main/java/com/example/Reader.java
+/home/vostok/codes/LibraryApp/src/main/java/com/example/ReaderRepository.java
+/home/vostok/codes/LibraryApp/src/main/java/com/example/BookRepository.java
 /home/vostok/codes/LibraryApp/src/main/java/com/example/Book.java
 /home/vostok/codes/LibraryApp/src/main/java/com/example/Copy.java
+/home/vostok/codes/LibraryApp/src/main/java/com/example/InMemoryBookRepository.java
 /home/vostok/codes/LibraryApp/src/main/java/com/example/App.java
 /home/vostok/codes/LibraryApp/src/main/java/com/example/Library.java
+/home/vostok/codes/LibraryApp/src/main/java/com/example/InMemoryReaderRepository.java

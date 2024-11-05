@@ -6,7 +6,7 @@ public class App
 {
     public static void main(String[] args)
     {
-        Library library = new Library();
+        Library library = new Library(new InMemoryBookRepository(), new InMemoryReaderRepository());
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
         while (running)
@@ -105,11 +105,11 @@ public class App
                     break;
 
                 case 6:
-                    System.out.println(library.get_books());
+                    library.display_books();
                     break;
 
                 case 7:
-                    System.out.println(library.get_user());
+                    library.display_users();
                     break;
 
                 case 8:

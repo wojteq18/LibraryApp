@@ -1,5 +1,9 @@
-com/example/Copy.class
+com/example/BookRepository.class
 com/example/App.class
-com/example/Library.class
 com/example/Reader.class
+com/example/ReaderRepository.class
+com/example/Copy.class
+com/example/InMemoryBookRepository.class
+com/example/InMemoryReaderRepository.class
+com/example/Library.class
 com/example/Book.class
