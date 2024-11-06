@@ -39,6 +39,7 @@
           <target>8</target>
         </configuration>
       </plugin>
+      
       <!-- Maven Surefire Plugin to run JUnit 5 tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -49,6 +50,40 @@
             <include>**/*Test.java</include>
           </includes>
         </configuration>
+      </plugin>
+      
+      <!-- Checkstyle Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>3.1.2</version>
+        <configuration>
+          <configLocation>checkstyle.xml</configLocation>
+          <failOnViolation>true</failOnViolation>
+        </configuration>
+      </plugin>
+
+      <!-- PMD Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.15.0</version>
+        <configuration>
+          <rulesets>
+            <ruleset>rulesets/java/basic.xml</ruleset>
+            <ruleset>rulesets/java/design.xml</ruleset>
+          </rulesets>
+          <failOnViolation>true</failOnViolation>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>verify</phase>
+            <goals>
+              <goal>pmd</goal>
+              <goal>cpd-check</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

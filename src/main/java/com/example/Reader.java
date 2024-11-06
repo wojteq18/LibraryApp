@@ -3,6 +3,10 @@ package com.example;
 import java.util.ArrayList;
 import java.util.List;
 
+// Klasa Reader jest odpowiedzialna za zarządzanie informacjami o czytelnikach i ich wypożyczonych książkach.
+// Zasada Information Expert jest zachowana, ponieważ klasa ta posiada wszystkie informacje potrzebne do zarządzania czytelnikiem.
+// Zasada High Cohesion jest zachowana, ponieważ klasa Reader ma dobrze zdefiniowane odpowiedzialności związane z zarządzaniem czytelnikiem.
+
 public class Reader
 {
     private String reader_name;

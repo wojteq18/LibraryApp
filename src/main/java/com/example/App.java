@@ -31,8 +31,18 @@ public class App
                     String title = scanner.nextLine();
                     System.out.println("Enter book author: ");
                     String author = scanner.nextLine();
+                    if(author.isEmpty() || title.isEmpty() || !author.matches("[a-zA-Z]+") || !title.matches("[a-zA-Z]+")) // Sprawdź, czy tytuł i autor książki zawierają tylko litery
+                    {
+                        System.out.println("Invalid book title or author");
+                        break;
+                    }
                     System.out.println("Enter book copies: ");
                     int copies = scanner.nextInt();
+                    if (copies < 0)
+                    {
+                        System.out.println("Invalid number of copies");
+                        break;
+                    }
                     scanner.nextLine();
                     Book book = new Book(title, author);
                     library.add_book(book, copies);
@@ -41,6 +51,11 @@ public class App
                 case 2: 
                     System.out.println("Enter user name: ");
                     String name = scanner.nextLine();
+                    if (name.isEmpty() || !name.matches("[a-zA-Z]+")) // Sprawdź, czy nazwa użytkownika zawiera tylko litery
+                    {
+                        System.out.println("Invalid user name");
+                        break;
+                    }
                     Reader reader = new Reader(name);
                     library.add_user(reader);
                     break;
@@ -116,7 +131,7 @@ public class App
                     System.out.println("Enter user name: ");
                     String user_name3 = scanner.nextLine();
                     Reader user3 = library.find_user_by_name(user_name3);
-                    if (user3 == null)
+                    if (user3 == null )
                     {
                         System.out.println("User not found in the library");
                         break;
@@ -140,7 +155,7 @@ public class App
                     }
                     else
                     {
-                        System.out.println("Number of copies: " + found_book.get_number_of_copies());
+                        System.out.println("Number of copies: " + found_book.get_number_of_available_copy());
                         break;
                     }
 

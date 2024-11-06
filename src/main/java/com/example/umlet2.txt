@@ -1,0 +1,29 @@
+@startuml
+
+actor User
+
+rectangle LibraryApp {
+    usecase "Add Book to Library" as UC_AddBook
+    usecase "Add User to Library" as UC_AddUser
+    usecase "Remove User from Library" as UC_RemoveUser
+    usecase "Borrow Book" as UC_BorrowBook
+    usecase "Return Book" as UC_ReturnBook
+    usecase "Display Books in Library" as UC_DisplayBooks
+    usecase "Display Users in Library" as UC_DisplayUsers
+    usecase "Display User's Borrowed Books" as UC_DisplayUserBooks
+    usecase "Find Book by Title and Author" as UC_FindBook
+    usecase "Find User by Name" as UC_FindUser
+}
+
+User --> UC_AddBook
+User --> UC_AddUser
+User --> UC_RemoveUser
+User --> UC_BorrowBook
+User --> UC_ReturnBook
+User --> UC_DisplayBooks
+User --> UC_DisplayUsers
+User --> UC_DisplayUserBooks
+User --> UC_FindBook
+User --> UC_FindUser
+
+@enduml

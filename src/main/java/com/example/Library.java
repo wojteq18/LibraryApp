@@ -2,6 +2,12 @@ package com.example;
 
 import java.util.List;
 
+// Klasa Library jest wysokopoziomowym modułem, który zarządza książkami i czytelnikami. 
+// Zasada Information Expert jest zachowana, ponieważ klasa ta posiada wszystkie informacje potrzebne do zarządzania biblioteką.
+// Zasada Low Coupling jest zachowana, ponieważ klasa Library zależy od abstrakcji (BookRepository, ReaderRepository), a nie od konkretnych implementacji.
+// Zasada High Cohesion jest zachowana, ponieważ klasa Library ma dobrze zdefiniowane odpowiedzialności związane z zarządzaniem biblioteką.
+
+
 public class Library
 {
     private final BookRepository book_repository;

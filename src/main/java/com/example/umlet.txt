@@ -1,0 +1,81 @@
+@startuml
+
+package com.example {
+
+    class App {
+        +main(String[] args)
+    }
+
+    class Library {
+        -BookRepository bookRepository
+        -ReaderRepository readerRepository
+        +add_book(Book book, int ilosc)
+        +add_user(Reader reader)
+        +remove_user(Reader reader)
+        +add_book_to_user(Book book, Reader reader)
+        +remove_book_from_user(Book book, Reader reader)
+        +get_books(): List<Book>
+        +get_users(): List<Reader>
+        +get_user_books(Reader reader): List<Book>
+        +get_number_of_books(): int
+    }
+
+    class Book {
+        -String title
+        -String author
+        -List<Copy> copies
+        +Book(String title, String author)
+        +add_copy(int number)
+        +get_number_of_copies(): int
+    }
+
+    class Copy {
+        +Copy()
+    }
+
+    class Reader {
+        -String name
+        -List<Book> borrowedBooks
+        +Reader(String name)
+        +borrow_book(Book book)
+        +return_book(Book book)
+        +get_borrowed_books(): List<Book>
+    }
+
+    class BookRepository {
+        +save(Book book)
+        +findById(String id): Book
+        +findAll(): List<Book>
+    }
+
+    class ReaderRepository {
+        +save(Reader reader)
+        +findById(String id): Reader
+        +findAll(): List<Reader>
+    }
+
+    class InMemoryBookRepository {
+        +save(Book book)
+        +findById(String id): Book
+        +findAll(): List<Book>
+    }
+
+    class InMemoryReaderRepository {
+        +save(Reader reader)
+        +findById(String id): Reader
+        +findAll(): List<Reader>
+    }
+
+    App --> Library : uses
+    Library --> Book : contains
+    Library --> Reader : contains
+    Library --> BookRepository : uses
+    Library --> ReaderRepository : uses
+    Book --> Copy : contains
+    Reader --> Book : borrows
+    BookRepository <|-- InMemoryBookRepository
+    ReaderRepository <|-- InMemoryReaderRepository
+
+}
+
+@enduml

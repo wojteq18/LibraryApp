@@ -1,5 +1,8 @@
 package com.example;
 
+// Klasa Copy reprezentuje pojedynczą kopię książki.
+// Zasada High Cohesion jest zachowana, ponieważ klasa Copy ma dobrze zdefiniowane odpowiedzialności związane z pojedynczą kopią książki.
+
 public class Copy
 {
     private Book book;

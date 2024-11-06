@@ -3,6 +3,10 @@ package com.example;
 import java.util.ArrayList;
 import java.util.List;
 
+// Klasa Book jest odpowiedzialna za zarządzanie informacjami o książkach i ich kopiach.
+// Zasada Information Expert jest zachowana, ponieważ klasa ta posiada wszystkie informacje potrzebne do zarządzania książką.
+// Zasada High Cohesion jest zachowana, ponieważ klasa Book ma dobrze zdefiniowane odpowiedzialności związane z zarządzaniem książką.
+
 public class Book
 {
     private String title;
@@ -66,6 +70,11 @@ public class Book
         {
             System.out.println("No copies to return");
         }
+    }
+
+    public int get_number_of_available_copy()
+    {
+        return (int) copies.stream().filter(Copy::is_available).count();
     }
 
     @Override
